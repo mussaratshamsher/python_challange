@@ -1,4 +1,21 @@
+#Q: Write a Python program that takes a number as an input and converts it into words
+
 #Solution 1
+
+import inflect
+
+def number_to_words(num):
+    # Create an inflect engine instance
+    p = inflect.engine()
+
+    # Convert the number to words
+    return p.number_to_words(num)
+
+# Input from user
+num = int(input("Enter a number: "))
+print(f"Output: {number_to_words(num)}")
+
+#Solution 2
 def number_to_words(num):
     # Dictionaries for word mapping
     ones = {0: "", 1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 
@@ -29,7 +46,7 @@ num = int(input("Enter a number: "))
 print(f"Output: {number_to_words(num)}")
 
 
-# Solution 2
+# Solution 3
 def number_to_words(num):
     ones = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", 
             "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
