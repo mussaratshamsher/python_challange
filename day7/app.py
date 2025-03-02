@@ -13,12 +13,12 @@ def delete_task(task_index):
     del st.session_state.tasks_list[task_index]
 
 # Streamlit UI layout
-st.set_page_config(page_title="To-Do List App", page_icon="📝", layout="wide")
+st.set_page_config(page_title="To-Do List App", page_icon="📝", layout="centered")
 
 # Add a custom header with a style
 st.markdown("""
     <style>
-        .header {font-size: 48px; font-weight: bold; color: #f39c12; text-align: center;}
+        .header {font-size: 48px; font-weight: bold; color:rgb(205, 130, 11); text-align: center;}
         .button {font-size: 16px; background-color: #1abc9c; color: white; border-radius: 8px; padding: 10px 20px;}
         .task {background-color:rgb(12, 160, 131); color: white; padding: 15px; border-radius: 10px;
          margin: 5px 0; font-size: 18px; transition: transform 0.3s; box-shadow: 0px 0px 10px rgb(132, 239, 218);}
@@ -33,7 +33,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Header Section
-st.markdown('<p class="header">To-Do List App</p>', unsafe_allow_html=True)
+st.markdown('<p class="header">✍📜To-Do List App</p>', unsafe_allow_html=True)
 
 # Display current tasks
 if len(st.session_state.tasks_list) > 0:
@@ -45,7 +45,8 @@ if len(st.session_state.tasks_list) > 0:
         with col1:
             st.markdown(f'<div class="task">{task}</div>', unsafe_allow_html=True)
         with col2:
-            delete_button = st.button(f"Delete", key=f"delete_{idx}", help="Delete this task", use_container_width=True)
+            delete_button = st.button(f"Delete", key=f"delete_{idx}", 
+            help="Delete this task", use_container_width=True)
             if delete_button:
                 delete_task(idx)
                 st.rerun()  # Refresh the app to reflect changes
@@ -68,5 +69,5 @@ with col1:
 
 with col2:
     if st.button("⬅Exit", help="Exit the app", use_container_width=True, key="exit"):
-        st.write("Exiting... Have a productive day! 👋")
+        st.write("💫Exiting... Have a productive day! 👋")
         st.stop()
