@@ -129,5 +129,6 @@ if not st.session_state.game_over:
 
 else:
     # If the game is over, hide the Submit button and show the Start Again button
+    st.info(f"Game Over! The correct number was {st.session_state.number_to_guess}.")
     if st.button("Start Again"):
         start_again()  # Reset the game state immediately without needing to refresh
