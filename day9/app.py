@@ -12,7 +12,7 @@
 
 # Solution:
 
-import re  # Import the regular expression module
+import re 
 
 def check_password_strength(password):
     # Check for weak password
