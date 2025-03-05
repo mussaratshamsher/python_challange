@@ -1,6 +1,9 @@
 import streamlit as st
 import re
 
+# Set page title and icon
+st.set_page_config(page_title="Password Strength Checker", page_icon="🔐" , layout="centered")
+
 # Function to check password strength
 def check_password_strength(password):
     # Check for weak password
