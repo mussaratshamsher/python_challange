@@ -1,3 +1,8 @@
+
+# 🚀 Challenge: "Emoji Sentiment Analyzer" 🤖😊
+# Q: Write a python program that takes an input message and detects mood of user by analyzing emoji used in 
+# the sentence. if emoji found , return relevant message , if no emoji found then return no emoji found.
+  
 import streamlit as st
 import re
 
