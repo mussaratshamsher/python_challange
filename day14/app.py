@@ -1,10 +1,10 @@
 # 🚀 Challenge: Create a Text-Based Adventure Game where the user makes choices that impact the story! 🎮✨
 
-🔥 Requirements:
-⿡ Display a short intro story.
-⿢ Give the player two choices at each step.
-⿣ The choices should lead to different outcomes (win/lose/continue).
-⿤ Keep it simple & interactive using input().
+# 🔥 Requirements:
+# ⿡ Display a short intro story.
+# ⿢ Give the player two choices at each step.
+# ⿣ The choices should lead to different outcomes (win/lose/continue).
+# ⿤ Keep it simple & interactive using input().
 
 
 import streamlit as st
