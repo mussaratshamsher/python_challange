@@ -179,10 +179,12 @@ def right_room():
 
 def spellbook():
     st.markdown('<p class="fade-in">You read the book and learn a powerful spell to escape! You win!</p>', unsafe_allow_html=True)
+    st.balloons()
     st.session_state.step = 'win'
 
 def portal():
     st.markdown('<p class="fade-in">You step into the portal and are transported to a new world. Congratulations, you’ve found freedom!</p>', unsafe_allow_html=True)
+    st.balloons()
     st.session_state.step = 'win'
 
 def trap():
@@ -191,7 +193,8 @@ def trap():
 
 def win():
     st.markdown('<p class="fade-in">🎉 Congratulations! You\'ve escaped to freedom! 🎉</p>', unsafe_allow_html=True)
-    st.markdown('<div class="balloon"></div>', unsafe_allow_html=True)  # Add a floating balloon 
+    st.balloons() 
+    st.markdown('<div class="balloon"></div>', unsafe_allow_html=True)  # Add a floating balloon
     
     if st.button("Play Again"):
         reset_game()
