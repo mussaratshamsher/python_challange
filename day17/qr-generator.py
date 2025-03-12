@@ -106,6 +106,7 @@ st.markdown("""
 
     /* Hover effect */
     .stButton>button:hover {
+            color: white;
         background: linear-gradient(145deg, #5560ea, #6e7dff); /* Reversed gradient on hover */
         box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
         transform: translateY(-4px); /* Slightly lift the button on hover */
