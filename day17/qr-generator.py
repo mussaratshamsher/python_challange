@@ -88,7 +88,6 @@ st.markdown("""
             background-position: 0% 50%;
         }
     }
-
     /* Custom button styling */
     .stButton>button {
         background: linear-gradient(145deg, #6e7dff, #5560ea); /* Default gradient background */
@@ -117,7 +116,6 @@ st.markdown("""
         transform: translateY(2px); /* Slightly depress the button when clicked */
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Less shadow on click */
     }
-
     </style>
 """, unsafe_allow_html=True)
 
