@@ -162,14 +162,13 @@ if st.button("Generate QR Code"):
         
         with col1:
             # Display the generated QR code
-            st.image(img, caption="Your QR Code", use_column_width=True)
+            st.image(img, caption="Your QR Code", use_container_width=True)
         
         with col2:
             # Create the shareable links for social media
             whatsapp_link, facebook_link, twitter_link = get_social_share_links(input_data)
             
-            # Display the share buttons 
-                 
+            # Display the share buttons                 
             st.markdown(f'<a href="{whatsapp_link}" target="_blank"><button style="background-color:#1da1f2; color:white; font-size:16px; border-radius:8px; padding:10px; width: 100%;">Share on WhatsApp</button></a>', unsafe_allow_html=True)
             st.markdown(f'<a href="{facebook_link}" target="_blank"><button style="background-color:#1da1f2; color:white; font-size:16px; border-radius:8px; padding:10px; width: 100%;">Share on Facebook</button></a>', unsafe_allow_html=True)
             st.markdown(f'<a href="{twitter_link}" target="_blank"><button style="background-color:#1da1f2; color:white; font-size:16px; border-radius:8px; padding:10px; width: 100%;">Share on Twitter</button></a>', unsafe_allow_html=True)
