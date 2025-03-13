@@ -19,7 +19,8 @@ def mark_completed(event):
     selected_task_index = task_listbox.curselection()
     if selected_task_index:
         task = task_listbox.get(selected_task_index)
-        task_listbox.delete(selected_task_index)
+        # Strike-through or change color
+        task_listbox.itemconfig(selected_task_index, {'fg': 'gray', 'font': ('Arial', 10, 'italic')})
         task_listbox.insert(selected_task_index, f"✔ {task}")
         save_tasks()
 
