@@ -12,7 +12,7 @@ def generate_qr_code(data):
     qr = qrcode.QRCode(
         version=1,
         error_correction=qrcode.constants.ERROR_CORRECT_L,
-        box_size=10,
+        box_size=6,
         border=4,
     )
     qr.add_data(data)
@@ -129,7 +129,7 @@ if st.button("Generate QR Code"):
         img = generate_qr_code(input_data)
         
         # Display the generated QR code
-        st.image(img, caption="Your QR Code", use_container_width=True)
+        st.image(img, caption="Your QR Code", use_container_width="300")
         
         # Create the PDF with the QR code in memory
         pdf_buffer = create_pdf(img)
