@@ -95,7 +95,7 @@ st.markdown("""
         font-weight: bold;
         border-radius: 25px; /* Rounded edges for a modern look */
         height: 50px;
-        width: 220px;
+        width: 100%;
         border: none;
         cursor: pointer;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
@@ -103,16 +103,45 @@ st.markdown("""
     }
     /* Hover effect */
     .stButton>button:hover {
-            color: white;
+            color: white; important!
         background: linear-gradient(145deg, #5560ea, #6e7dff); /* Reversed gradient on hover */
         box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
         transform: translateY(-4px); /* Slightly lift the button on hover */
     }
     /* Active effect */
     .stButton>button:active {
+          color: white; important!   
         transform: translateY(2px); /* Slightly depress the button when clicked */
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Less shadow on click */
     }
+        /* Style for download button */
+    .stDownloadButton>button {
+        background: linear-gradient(145deg, #6e7dff, #5560ea); /* Gradient background */
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 50px; /* Rounded corners */
+        height: 50px;
+        width: 100%;
+        border: none;
+        cursor: pointer;
+        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        transition: all 0.3s ease; /* Smooth transition for hover effect */
+        text-align: center;
+    }
+
+    /* Hover effect for download button */
+    .stDownloadButton>button:hover {
+        background: linear-gradient(145deg, #5560ea, #6e7dff); /* Reverse gradient */
+        box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        transform: translateY(-5px); /* Lift button on hover */
+    }
+
+    /* Active effect for download button */
+    .stDownloadButton>button:active {
+        transform: translateY(2px); /* Depress button when clicked */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow on click */
+    }             
     </style>
 """, unsafe_allow_html=True)
 
@@ -128,37 +157,33 @@ if st.button("Generate QR Code"):
         # Generate QR code
         img = generate_qr_code(input_data)
         
-        # Display the generated QR code
-        st.image(img, caption="Your QR Code", use_container_width="300")
+         # Create a 2-column layout for the QR code and social media buttons
+        col1, col2 = st.columns([1, 1])
         
-        # Create the PDF with the QR code in memory
+        with col1:
+            # Display the generated QR code
+            st.image(img, caption="Your QR Code", use_column_width=True)
+        
+        with col2:
+            # Create the shareable links for social media
+            whatsapp_link, facebook_link, twitter_link = get_social_share_links(input_data)
+            
+            # Display the share buttons        
+            st.markdown(f'<a href="{whatsapp_link}" target="_blank">Share on WhatsApp</a>', unsafe_allow_html=True)
+            st.markdown(f'<a href="{facebook_link}" target="_blank"><button style="background-color:#1da1f2; color:white; font-size:16px; border-radius:8px; padding:10px; width: 100%;">Share on Facebook</button></a>', unsafe_allow_html=True)
+            st.markdown(f'<a href="{twitter_link}" target="_blank"><button style="background-color:#1da1f2; color:white; font-size:16px; border-radius:8px; padding:10px; width: 100%;">Share on Twitter</button></a>', unsafe_allow_html=True)
+           
+            # Download button with custom styling
+            st.markdown('<div class="stDownloadButton">', unsafe_allow_html=True)
+            st.download_button(label="Download QR Code Image", data=img, file_name="qrcode.png", mime="image/png",use_container_width=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+
+                    # Create the PDF with the QR code in memory
         pdf_buffer = create_pdf(img)
         
         # Provide a download link for the PDF
         st.markdown(get_pdf_download_link(pdf_buffer), unsafe_allow_html=True)
-        
-        # Provide a shareable link to download the QR code image
-        st.download_button(
-            label="Download QR Code Image",
-            data=img,
-            file_name="qrcode.png",
-            mime="image/png"
-        )
-        
-        # Social media sharing buttons
-        whatsapp_link, facebook_link, twitter_link = get_social_share_links(input_data)
 
-        # Buttons to share on WhatsApp, Facebook, and Twitter
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            st.markdown(f'<a href="{whatsapp_link}" target="_blank"><button style="background-color:#1da1f2; color:white; font-size:16px; border-radius:8px; padding:10px;">Share on WhatsApp</button></a>', unsafe_allow_html=True)
-        
-        with col2:
-            st.markdown(f'<a href="{facebook_link}" target="_blank"><button style="background-color:#3b5998; color:white; font-size:16px; border-radius:8px; padding:10px;">Share on Facebook</button></a>', unsafe_allow_html=True)
-        
-        with col3:
-            st.markdown(f'<a href="{twitter_link}" target="_blank"><button style="background-color:#1da1f2; color:white; font-size:16px; border-radius:8px; padding:10px;">Share on Twitter</button></a>', unsafe_allow_html=True)
 
     else:
         st.error("Please enter some text, URL, or message.")
