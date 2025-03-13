@@ -75,7 +75,6 @@ st.markdown("""
         animation: gradientShift 10s ease infinite; /* Animation for smooth transition */
         min-height: 100vh; /* Ensure the background covers full height */
     }
-
     /* Keyframe animation for smooth background gradient shifting */
     @keyframes gradientShift {
         0% {
@@ -102,7 +101,6 @@ st.markdown("""
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
         transition: all 0.3s ease; /* Smooth transition for hover effect */
     }
-
     /* Hover effect */
     .stButton>button:hover {
             color: white;
@@ -110,7 +108,6 @@ st.markdown("""
         box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
         transform: translateY(-4px); /* Slightly lift the button on hover */
     }
-
     /* Active effect */
     .stButton>button:active {
         transform: translateY(2px); /* Slightly depress the button when clicked */
@@ -132,7 +129,7 @@ if st.button("Generate QR Code"):
         img = generate_qr_code(input_data)
         
         # Display the generated QR code
-        st.image(img, caption="Your QR Code", use_column_width=True)
+        st.image(img, caption="Your QR Code", use_container_width=True)
         
         # Create the PDF with the QR code in memory
         pdf_buffer = create_pdf(img)
